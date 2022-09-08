@@ -103,11 +103,24 @@ class LinkedList:
                 itr.next = itr.next.next
             itr = itr.next
 
+    def reverse(self):
+        prev = None
+        current = nextNode = self.head
+        while nextNode is not None:
+            nextNode = nextNode.next
+            current.next = prev
+            prev = current
+            current = nextNode
+        self.head = prev
+
+
 newList = LinkedList()
 newList.map([3,1,2])
 newList.pop(2)
 newList.insert(1, 'ugh')
 newList.add('ugh', 2)
 newList.remove('ugh')
+newList.print()
+newList.reverse()
 newList.print()
 print(newList.len())
