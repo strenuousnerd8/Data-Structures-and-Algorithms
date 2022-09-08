@@ -103,7 +103,7 @@ class LinkedList:
                 itr.next = itr.next.next
             itr = itr.next
 
-    def reverse(self):
+    def reverse(self): # Reverse all the elements via head
         prev = None
         current = nextNode = self.head
         while nextNode is not None:
