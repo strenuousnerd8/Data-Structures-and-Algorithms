@@ -59,12 +59,12 @@ print(s.is_balanced("{{[[(())]]}}"))     # --> True
 print(s.is_balanced("))((a+b}{"))   # --> False
 print(s.is_balanced("((a+b))"))     # --> True
 print(s.is_balanced("))"))          # --> False
-# print(s.is_balanced("[a+b]*(x+2y)*{gg+kk}")) # --> True
-# print(s.reverse_string("We will conquere COVID-19"))
-# s.flush()
-# s.push(5)
-# s.push(3)
-# s.push(1)
-# print(s.pop())
-# print(s.peek())
-# s.print()
+print(s.is_balanced("[a+b]*(x+2y)*{gg+kk}")) # --> True
+print(s.reverse_string("We will conquere COVID-19"))
+s.flush()
+s.push(5)
+s.push(3)
+s.push(1)
+print(s.pop())
+print(s.peek())
+s.print()
