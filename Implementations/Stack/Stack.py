@@ -32,13 +32,39 @@ class Stack:
     def flush(self):
         self.container.clear()
 
+    def is_balanced(self, data):
+        self.flush()
+        data = ''.join([i for i in data if i in ['(','[','{',')',']','}']])
+        for char in data:
+            if char in ['(','[','{']:
+                self.push(char)
+            elif char in [')',']','}']:
+                if self.is_empty():
+                    return False
+                last_bracket = self.pop()
+                if last_bracket == '(' and char == ')':
+                    continue
+                elif last_bracket == '[' and char == ']':
+                    continue
+                elif last_bracket == '{' and char == '}':
+                    continue
+                else:
+                    return False
+        return True if self.is_empty() else False
+
+
 s = Stack()
 
-print(s.reverse_string("We will conquere COVID-19"))
-s.flush()
-s.push(5)
-s.push(3)
-s.push(1)
-print(s.pop())
-print(s.peek())
-s.print()
+print(s.is_balanced("{{[[(())]]}}"))     # --> True
+print(s.is_balanced("))((a+b}{"))   # --> False
+print(s.is_balanced("((a+b))"))     # --> True
+print(s.is_balanced("))"))          # --> False
+# print(s.is_balanced("[a+b]*(x+2y)*{gg+kk}")) # --> True
+# print(s.reverse_string("We will conquere COVID-19"))
+# s.flush()
+# s.push(5)
+# s.push(3)
+# s.push(1)
+# print(s.pop())
+# print(s.peek())
+# s.print()
