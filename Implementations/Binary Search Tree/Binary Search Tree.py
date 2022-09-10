@@ -4,10 +4,10 @@ class Queue:
     def __init__(self):
         self.buffer = deque()
 
-    def push(self, data):
+    def enqueue(self, data):
         self.buffer.appendleft(data)
 
-    def pop(self):
+    def dequeue(self):
         return self.buffer.pop()
 
     def isEmpty(self):
@@ -91,15 +91,15 @@ class BinarySearchTreeNode:
 
     def levelOrder(self):
         q = Queue()
-        q.push(self)
+        q.enqueue(self)
         res = []
         while not q.isEmpty():
-            currentNode = q.pop()
+            currentNode = q.dequeue()
             res.append(currentNode.data)
             if currentNode.left:
-                q.push(currentNode.left)
+                q.enqueue(currentNode.left)
             if currentNode.right:
-                q.push(currentNode.right)
+                q.enqueue(currentNode.right)
         return res
 
 def treeBuilder(dataset):
