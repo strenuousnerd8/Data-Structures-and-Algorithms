@@ -1,3 +1,15 @@
+from collections import deque
+
+class Stack:
+    def __init__(self):
+        self.container = deque()
+
+    def push(self, data):
+        self.container.append(data)
+
+    def pop(self):
+        return self.container.pop()
+
 class Node:
     def __init__(self, data = None, next = None):
         self.data = data
@@ -92,8 +104,16 @@ class LinkedList:
             slow = slow.next
             fast = fast.next.next
             if fast == slow:
-                return True
-        return False
+                return slow
+        return None
+
+    def cycleOccurance(self):
+        meet = self.checkCycle()
+        start = self.head
+        while start != meet:
+            start = start.next
+            meet = meet.next
+        return start.data
 
     def addCycle(self):
         head = self.head
@@ -102,6 +122,27 @@ class LinkedList:
             itr = itr.next
         itr.next = Node(1, head.next)
 
+    def findMiddleElement(self):
+        slow = fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow.data
+
+    def checkPalindrome(self):
+        supportHead = self.head
+        itr = self.head
+        s = Stack()
+        while supportHead:
+            s.push(supportHead.data)
+            supportHead = supportHead.next
+        while itr:
+            i = s.pop()
+            if itr.data != i:
+                return False
+            itr = itr.next
+        return True
+
 if __name__ == "__main__":
     ll = LinkedList()
     ll.insertBeginning(1)
@@ -109,11 +150,13 @@ if __name__ == "__main__":
     ll.insertEnd(0)
     ll.insertEnd(-1)
     ll.insertAt(1, 2)
-    ll.insertValues([1, 2, 3, 4, 5])
-    ll.removeAt(4)
+    ll.insertValues(['n', 'i', 't', 'i', 'n'])
+    # ll.removeAt(4)
     ll.print()
     ll.reverse()
     ll.print()
     print('Length:', ll.getLength())
-    #ll.addCycle()
-    print(ll.checkCycle())
+    print(ll.findMiddleElement())
+    print(ll.checkPalindrome())
+    ll.addCycle()
+    print(ll.cycleOccurance())
