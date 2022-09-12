@@ -54,25 +54,32 @@ class Stack:
         return rev
 
 if __name__ == '__main__':
-    # mainStack = Stack()
-    # supportingStack = Stack()
+    mainStack = Stack()
+    supportingStack = Stack()
 
-    # def push(data):
-    #     if not supportingStack.peek():
-    #         supportingStack.push(data)
-    #     elif data < supportingStack.peek():
-    #         supportingStack.push(data)
-    #     else:
-    #         mainStack.push(data)
+    def push(data):
+        if not supportingStack.peek():
+            supportingStack.push(data)
+        elif data < supportingStack.peek():
+            supportingStack.push(data)
+        else:
+            mainStack.push(data)
 
-    # def pop():
-    #     curr = mainStack.pop()
-    #     if curr == supportingStack.peek():
-    #         supportingStack.pop()
-    #     print(curr)
+    def pop():
+        curr = mainStack.pop()
+        if curr == supportingStack.peek():
+            supportingStack.pop()
+        print(curr)
 
-    # def getMin():
-    #     print(supportingStack.peek())
+    def getMin():
+        print(supportingStack.peek())
+
+    push(2)
+    push(3)
+    pop()
+    getMin()
+    push(1)
+    getMin()
 
     s = Stack()
     print(s.is_balanced("{{[[(())]]}}"))     # --> True
@@ -81,10 +88,3 @@ if __name__ == '__main__':
     print(s.is_balanced("))"))          # --> False
     print(s.is_balanced("[a+b]*(x+2y)*{gg+kk}")) # --> True
     print(s.reverse("We will conquere COVID-19"))
-
-    # push(2)
-    # push(3)
-    # pop()
-    # getMin()
-    # push(1)
-    # getMin()
