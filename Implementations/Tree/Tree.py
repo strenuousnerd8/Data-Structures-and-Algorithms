@@ -27,11 +27,12 @@ class TreeNode:
     def printTreeByLevel(self, level):
         if self.getLevel() > level:
             return
-        spaces = ' ' * (self.getLevel() * 3)
+        spaces = " " * (self.getLevel() * 3)
         prefix = spaces + "|__ " if self.parent else ""
         print(prefix + self.data)
         for child in self.children:
             child.printTreeByLevel(level)
+
 
 Electronics = TreeNode("Electronics")
 Laptops = TreeNode("Laptops")
